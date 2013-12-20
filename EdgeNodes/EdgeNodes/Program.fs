@@ -33,4 +33,4 @@ let main argv =
     for row = 0 to sides - 1 do
         let column = [0..sides - 1] |> List.map (fun x -> lookup (row, x) map) |> String.concat ""
         printfn "%s" column
-    0 // return an integer exit code
+    0
