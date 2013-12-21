@@ -180,3 +180,10 @@ $RECYCLE.BIN/
 
 # VI gitignore
 *~
+*.swp
+
+# MonoDevelop stuff
+*.userprefs
+
+# OS X
+.DS_Store
