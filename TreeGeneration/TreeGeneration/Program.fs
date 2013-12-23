@@ -1,16 +1,15 @@
-
-// NOTE: If warnings appear, you may need to retarget this project to .NET 4.0. Show the Solution
-// Pad, right-click on the project node, choose 'Options --> Build --> General' and change the target
-// framework to .NET 4.0 or .NET 4.5.
-
-module TreeGeneration.Main
-
-open System
-
-let someFunction x y = x + y
-
 [<EntryPoint>]
-let main args = 
-    Console.WriteLine("Hello world!")
+let main argv =
+    let split (c:char) (s:string) = s.Split(c)
+    let input = System.Console.ReadLine() |> split ' '
+    let baselength, tree, trunk = (int input.[0], Seq.head input.[1], Seq.head input.[2])
+    let treeHeight = (baselength + 1) / 2
+    for linenum in [1..treeHeight] do
+        let currentLength = 2 * linenum - 1
+        printfn "%s%s" (" " |> String.replicate ((baselength - currentLength) / 2)) (string tree |> String.replicate currentLength)
+    let min =
+        match baselength with
+        | n when n > 3 -> (n - 3) / 2 
+        | _ -> 0
+    printfn "%s%s" (String.replicate min " ") (string trunk |> String.replicate 3)
     0
-
